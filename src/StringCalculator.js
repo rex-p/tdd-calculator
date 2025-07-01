@@ -17,14 +17,18 @@ class StringCalculator {
             return 0;
         }
         
-        // Handle single number case
-        const num = parseInt(numbers);
-        if (!isNaN(num)) {
-            return num;
+        // Split by comma and sum all numbers
+        const parts = numbers.split(",");
+        let sum = 0;
+        
+        for (const part of parts) {
+            const num = parseInt(part.trim());
+            if (!isNaN(num)) {
+                sum += num;
+            }
         }
         
-        // Implementation will be expanded following TDD approach
-        throw new Error('Not implemented yet');
+        return sum;
     }
 }
 
