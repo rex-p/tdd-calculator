@@ -68,4 +68,26 @@ describe('StringCalculator', () => {
             expect(calculator.add("100,200")).toBe(300);
         });
     });
+
+    describe('TDD Step 4: Multiple Numbers Support', () => {
+        test('should return sum of multiple comma-separated numbers', () => {
+            // Arrange
+            const input = "1,2,3,4";
+            const expected = 10;
+
+            // Act
+            const result = calculator.add(input);
+
+            // Assert
+            expect(result).toBe(expected);
+        });
+
+        test('should handle various multiple number combinations', () => {
+            expect(calculator.add("1,2,3")).toBe(6);
+            expect(calculator.add("5,10,15,20")).toBe(50);
+            expect(calculator.add("1,2,3,4,5,6,7,8,9,10")).toBe(55);
+            expect(calculator.add("0,1,2,3,4")).toBe(10);
+            expect(calculator.add("100,200,300")).toBe(600);
+        });
+    });
 }); 
