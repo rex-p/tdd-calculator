@@ -15,6 +15,16 @@ describe('StringCalculator', () => {
     });
 
     describe('TDD Step 1: Empty String Test Case', () => {
-        // Tests will be added following TDD cycles
+        test('should return 0 for empty string', () => {
+            // Arrange
+            const input = "";
+            const expected = 0;
+
+            // Act
+            const result = calculator.add(input);
+
+            // Assert
+            expect(result).toBe(expected);
+        });
     });
 }); 
