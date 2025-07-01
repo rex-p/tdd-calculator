@@ -19,8 +19,12 @@ class StringCalculator {
         
         const { delimiter, numbersToProcess } = this._parseDelimiterAndNumbers(numbers);
         const normalizedNumbers = numbersToProcess.replace(/\n/g, delimiter);
+        const parts = normalizedNumbers.split(delimiter);
         
-        return this._sumNumbers(normalizedNumbers.split(delimiter));
+        // Check for negative numbers before processing
+        this._validateNoNegativeNumbers(parts);
+        
+        return this._sumNumbers(parts);
     }
 
     /**
@@ -43,6 +47,27 @@ class StringCalculator {
         }
         
         return { delimiter, numbersToProcess };
+    }
+
+    /**
+     * Validates that no negative numbers are present in the input
+     * @param {string[]} parts - Array of number strings
+     * @throws {Error} If negative numbers are found
+     * @private
+     */
+    _validateNoNegativeNumbers(parts) {
+        const negativeNumbers = [];
+        
+        for (const part of parts) {
+            const num = parseInt(part.trim());
+            if (!isNaN(num) && num < 0) {
+                negativeNumbers.push(num);
+            }
+        }
+        
+        if (negativeNumbers.length > 0) {
+            throw new Error(`negative numbers not allowed ${negativeNumbers.join(",")}`);
+        }
     }
 
     /**
