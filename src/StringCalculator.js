@@ -12,7 +12,12 @@ class StringCalculator {
      * @returns {number} Sum of the numbers
      */
     add(numbers) {
-        // Implementation will be added following TDD approach
+        // Handle empty string case
+        if (numbers === "") {
+            return 0;
+        }
+        
+        // Implementation will be expanded following TDD approach
         throw new Error('Not implemented yet');
     }
 }
