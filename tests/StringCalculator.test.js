@@ -112,4 +112,26 @@ describe('StringCalculator', () => {
             expect(calculator.add("1\n2\n3\n4\n5")).toBe(15);
         });
     });
+
+    describe('TDD Step 6: Custom Delimiters Support', () => {
+        test('should handle custom delimiters', () => {
+            // Arrange
+            const input = "//;\n1;2";
+            const expected = 3;
+
+            // Act
+            const result = calculator.add(input);
+
+            // Assert
+            expect(result).toBe(expected);
+        });
+
+        test('should handle various custom delimiters', () => {
+            expect(calculator.add("//|\n1|2|3")).toBe(6);
+            expect(calculator.add("//:\n5:10:15")).toBe(30);
+            expect(calculator.add("//*\n1*2*3*4")).toBe(10);
+            expect(calculator.add("//&\n100&200")).toBe(300);
+            expect(calculator.add("//#\n7#8#9")).toBe(24);
+        });
+    });
 }); 
