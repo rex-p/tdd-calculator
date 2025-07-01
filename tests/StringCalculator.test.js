@@ -90,4 +90,26 @@ describe('StringCalculator', () => {
             expect(calculator.add("100,200,300")).toBe(600);
         });
     });
+
+    describe('TDD Step 5: Newline Delimiter Support', () => {
+        test('should handle newlines as delimiters', () => {
+            // Arrange
+            const input = "1\n2,3";
+            const expected = 6;
+
+            // Act
+            const result = calculator.add(input);
+
+            // Assert
+            expect(result).toBe(expected);
+        });
+
+        test('should handle various newline delimiter combinations', () => {
+            expect(calculator.add("1\n2")).toBe(3);
+            expect(calculator.add("1\n2\n3")).toBe(6);
+            expect(calculator.add("10\n20,30")).toBe(60);
+            expect(calculator.add("5,10\n15,20")).toBe(50);
+            expect(calculator.add("1\n2\n3\n4\n5")).toBe(15);
+        });
+    });
 }); 

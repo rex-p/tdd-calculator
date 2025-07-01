@@ -17,8 +17,11 @@ class StringCalculator {
             return 0;
         }
         
+        // Replace newlines with commas to handle both delimiters
+        const normalizedNumbers = numbers.replace(/\n/g, ",");
+        
         // Split by comma and sum all numbers
-        const parts = numbers.split(",");
+        const parts = normalizedNumbers.split(",");
         let sum = 0;
         
         for (const part of parts) {
