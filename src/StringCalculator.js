@@ -17,6 +17,12 @@ class StringCalculator {
             return 0;
         }
         
+        // Handle single number case
+        const num = parseInt(numbers);
+        if (!isNaN(num)) {
+            return num;
+        }
+        
         // Implementation will be expanded following TDD approach
         throw new Error('Not implemented yet');
     }
